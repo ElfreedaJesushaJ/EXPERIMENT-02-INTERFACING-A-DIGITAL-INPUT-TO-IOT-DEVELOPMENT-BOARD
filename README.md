@@ -1,13 +1,13 @@
 # EXPERIMENT-02-INTERFACING-A-DIGITAL-INPUT-OUTPUT-TO-IOT-DEVELOPMENT-BOARD
 
 
-**DATE:**
+**DATE:** 16.05.2026
 
-**NAME:**
+**NAME:** ELFREEDA JESUSHA J
 
-**ROLL NO:**
+**ROLL NO:** 212224040084
 
-**DEPARTMENT:**
+**DEPARTMENT:** COMPUTER SCIENCE ENGINEERING
 
 ## Aim
 
@@ -102,10 +102,44 @@ IR technology is used in a wide range of wireless applications which includes re
 ## STM 32 CUBE PROGRAM
 
 ```
-// Your STM 32 CUBE Program code here
+#include "main.h"
+#include "stdbool.h"
+bool ir_sensor;
+
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+
+int main(void)
+{
+  HAL_Init();
+  SystemClock_Config();
+  MX_GPIO_Init();
+
+  while (1)
+  {
+	  ir_sensor =   HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4);
+	  if (ir_sensor == 0)
+	  {
+		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
+
+	  }
+	  else
+	  {
+		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+
+	  }
+  }
+}
+
 ```
 
 ## OUTPUT
+
+DETECTED: 
+<img width="1200" height="1600" alt="exp2_iot_1" src="https://github.com/user-attachments/assets/d6828abb-44d9-49b1-bfca-f13d47116d87" />
+
+NOT DETECTED:
+<img width="1200" height="1600" alt="exp2_iot_2" src="https://github.com/user-attachments/assets/248ee48a-686e-4cdd-b039-47b6210a3077" />
 
 ## Result
 
